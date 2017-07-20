@@ -4,6 +4,6 @@ sudo: enabled
 
 deply:
   provider: heroku
-  api_key:
-    secure: "czar"
+  #api_key:
+   # secure: "czar"
   app: bucketlist
