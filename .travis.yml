@@ -2,7 +2,7 @@ language: python
 
 sudo: enabled
 
-deply:
+deploy:
   provider: heroku
   #api_key:
    # secure: "czar"
