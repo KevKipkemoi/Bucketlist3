@@ -8,13 +8,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from flask_wtf.csrf import CsrfProtect
 
-app = Flask(__name__) # , template_folder='./app/templates')
+app = Flask(__name__)
 app.config.from_object('config')
 
-db = SQLAlchemy(app) # Initiliazation of database
+db = SQLAlchemy(app)
 CsrfProtect(app)
 
-engine = create_engine('sqlite:///goals.db', echo = True) # create a database when called
+engine = create_engine('sqlite:///goals.db', echo = True)
 Session = sessionmaker(bind=engine)
 session = Session()
 

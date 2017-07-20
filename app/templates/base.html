@@ -23,10 +23,11 @@ Bucket List
 
 <body>
   {% block content %}
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -34,8 +35,8 @@ Bucket List
           </button>
           <a class="navbar-brand" href="#">BUCKET LIST</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+        <div id="navbar" class="nav-collapse collapse">
+          <ul class="nav" role="menubar">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="{{ url_for('login') }}">Login</a></li>
             <li><a href="{{ url_for('signup') }}">Sign Up</a></li>

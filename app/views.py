@@ -31,7 +31,6 @@ def index():
     return render_template('index.html')
 
 def flash_errors(form):
-    """Flashes form errors"""
     for field, errors in form.errors.items():
         for error in errors:
             flash(u"Error in the %s field - %s" % (
@@ -42,9 +41,6 @@ def flash_errors(form):
 
 @app.route("/login", methods=['POST', 'GET'])
 def login():
-    '''Authenticate if the user info is correct and then log the user in or redirect
-    or redirect them to the sign up pagedown
-    '''
     error = None
     form = LoginForm(request.form)
     if form.validate():
@@ -62,7 +58,6 @@ def login():
 @app.route("/logout", methods=["GET"])
 @login_required
 def logout():
-    """Logout the current user."""
     user = current_user
     user.authenticated = False
     #session.add(user)
@@ -73,9 +68,6 @@ def logout():
 
 @app.route("/signup", methods=['POST', 'GET'])
 def signup():
-    '''
-    Register a new user and add the data to the database
-    '''
     form = SignUpForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User(form.firstname.data, form.lastname.data, form.username.data, form.email.data,
@@ -92,9 +84,6 @@ def signup():
 @app.route("/setgoals", methods=['POST', 'GET'])
 @login_required
 def setgoals():
-    '''
-    Creates a new journal that has only tags and tags
-    '''
     form = GoalsForm(request.form)
     if request.method == 'POST' and form.validate():
         new = Goals(form.body.data, form.tags.data, current_user_id)
@@ -111,7 +100,6 @@ def setgoals():
 @app.route("/viewentries/", methods=['GET'])
 @login_required
 def viewentries(id=None):
-    #get all goals
     entry_rows = None
     if id is not None:
         entry_rows = session.query(Goals).filter(Goals.id==id)
